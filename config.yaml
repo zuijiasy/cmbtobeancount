@@ -1,0 +1,303 @@
+currency: CNY
+
+accounts:
+  # 使用模板格式，{card_number}将被替换为实际的卡号后四位
+  assets_template: "Liabilities:CN:CMB:Card-{card_number}"
+  expenses: Expenses:Unknown
+  income: Income:Unknown
+
+# 商家分类规则
+rules:
+  categories:
+    # 饮品
+    beverages:
+      account: Expenses:Food:Beverages
+      patterns:
+        - "暖爸鲜米酒"
+        - "星巴克"
+        - "奶茶"
+        - "咖啡"
+        - "酒水"
+        - "饮品"
+        - "果汁"
+        - "茶"
+        - "丰盛冷饮"
+        - "冰激凌"
+        - "Manner Coffee"
+        - "Tims咖啡"
+
+    # 餐饮
+    dining:
+      account: Expenses:Food:Dining
+      patterns:
+        - "美团"
+        - "饿了么"
+        - "餐厅"
+        - "火锅"
+        - "小吃"
+        - "食堂"
+        - "烧烤"
+        - "麦当劳"
+        - "肯德基"
+        - "赛百味"
+        - "盖饭"
+        - "菜馆"
+        - "饭店"
+        - "美食"
+        - "菜"
+        - "饭"
+        - "锅物料理"
+        - "绝味食品"
+        - "北京三快在线科技有限公司"
+        - "北京三快在线科技有限公"
+        - "拉扎斯网络科技"
+        - "拉扎斯"
+
+    # 交通
+    transportation:
+      account: Expenses:Transport
+      patterns:
+        - "滴滴"
+        - "高德"
+        - "打车"
+        - "地铁"
+        - "公交"
+        - "出租车"
+        - "停车费"
+        - "停车场"
+        - "加油"
+        - "充电"
+        - "高速"
+        - "ETC"
+        - "南京安充智能科技有限公司"
+        - "南京安充智能科技有限公"
+        - "安充智能"
+        - "电瓶车充电"
+        - "电动自行车充电"
+        - "中铁网络"
+        - "铁路客票"
+        - "火车票"
+        - "动车"
+        - "高铁"
+        - "12306"
+        - "哈啰普惠科技有限公司"
+        - "哈啰普惠科技有限公"
+        - "哈啰"
+        - "共享单车"
+        - "单车"
+
+    # 可报销支出
+    reimbursable:
+      account: Assets:Receivable:Reimbursement
+      patterns:
+        - "差旅"
+        - "报销"
+        - "商务"
+        - "出差"
+        - "融通.*出差"
+        - "机票.*出差"
+        - "酒店.*出差"
+        - "住宿.*出差"
+        - "招待所.*出差"
+
+    # 食品杂货
+    groceries:
+      account: Expenses:Food:Groceries
+      patterns:
+        - "上海盒马网络科技有限公司"
+        - "上海盒马网络科技有限公"
+        - "盒马"
+        - "永辉"
+        - "沃尔玛"
+        - "家乐福"
+        - "超市"
+        - "生鲜"
+        - "食材"
+
+    # 购物
+    shopping:
+      account: Expenses:Shopping
+      patterns:
+        - "淘宝"
+        - "天猫"
+        - "京东"
+        - "拼多多"
+        - "商场"
+        - "便利店"
+
+    # 娱乐
+    entertainment:
+      account: Expenses:Entertainment
+      patterns:
+        - "电影"
+        - "游戏"
+        - "网易"
+        - "腾讯"
+        - "爱奇艺"
+        - "优酷"
+        - "哔哩哔哩"
+        - "KTV"
+        - "电玩"
+        - "NUVEI GLOBAL SERVICE"
+        - "STEAM"
+        - "上海国际主题乐园有限公司"
+        - "上海国际主题乐园有限公"
+        - "主题乐园"
+        - "游乐"
+        - "银河互联网电视有限公司"
+        - "银河互联网电视有限公"
+        - "电视会员"
+
+    # 日用品
+    daily:
+      account: Expenses:Daily
+      patterns:
+        - "清洁"
+        - "卫生"
+        - "美妆"
+        - "理发"
+        - "美发"
+
+    # 医疗支出
+    medical:
+      account: Expenses:Health:Medical
+      patterns:
+        - "叮当智慧药房"
+        - "药房"
+        - "药店"
+        - "医院"
+        - "诊所"
+        - "口罩"
+        - "挂号"
+        - "就医"
+        - "处方"
+        - "医保"
+
+    # 住房
+    housing:
+      account: Expenses:Housing
+      patterns:
+        - "房租"
+        - "物业"
+        - "水费"
+        - "电费"
+        - "燃气"
+        - "暖气"
+        - "宽带"
+        - "装修"
+
+    # 教育
+    education:
+      account: Expenses:Education
+      patterns:
+        - "学校"
+        - "培训"
+        - "教育"
+        - "书店"
+        - "课程"
+        - "考试"
+        - "学费"
+        - "围棋"
+        - "曌聪教育"
+
+    # 数码电子
+    electronics:
+      account: Expenses:Electronics
+      patterns:
+        - "苹果"
+        - "华为"
+        - "小米"
+        - "OPPO"
+        - "VIVO"
+        - "三星"
+        - "电脑"
+        - "数码"
+
+    # 服装
+    clothing:
+      account: Expenses:Clothing
+      patterns:
+        - "优衣库"
+        - "服装"
+        - "鞋"
+        - "箱包"
+        - "首饰"
+        - "配饰"
+
+    # 健康运动
+    health:
+      account: Expenses:Health
+      patterns:
+        - "健身"
+        - "运动"
+        - "游泳"
+        - "瑜伽"
+        - "体检"
+        - "医疗"
+        - "保健"
+
+    # 旅游
+    travel:
+      account: Expenses:Travel
+      patterns:
+        - "机票" # 需要手动检查是否为出差机票可报销
+        - "酒店" # 需要手动检查是否为出差住宿可报销
+        - "旅游"
+        - "度假"
+        - "景点"
+        - "民宿"
+        - "融通" # 需要手动检查是否为出差住宿可报销
+        - "招待所" # 需要手动检查是否为出差住宿可报销
+
+    # 通信
+    communication:
+      account: Expenses:Communication
+      patterns:
+        - "中国联合网络通信有限公司"
+        - "中国联合网络通信有限公"
+        - "移动"
+        - "联通"
+        - "电信"
+        - "话费"
+        - "流量"
+        - "手机卡"
+
+    # 保险
+    insurance:
+      account: Expenses:Insurance
+      patterns:
+        - "保险"
+        - "社保"
+        - "医保"
+        - "公积金"
+
+    # 收入
+    income:
+      account: Income:Salary
+      patterns:
+        - "工资"
+        - "薪资"
+        - "报销"
+        - "补贴"
+        - "奖金"
+        - "红包"
+
+    # 零食
+    snacks:
+      account: Expenses:Food:Snacks
+      patterns:
+        - "欢囍花生"
+        - "坚果"
+        - "零食"
+        - "瓜子"
+        - "花生"
+        - "糖果"
+        - "饼干"
+        - "薯片"
+
+    电费:
+      account: Expenses:Home:Electricity
+      patterns:
+        - "国网上海市电力公司"
+        - "国网电力"
+        - "电费"
