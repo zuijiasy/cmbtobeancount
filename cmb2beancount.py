@@ -442,7 +442,7 @@ class CMBBeanConverter:
         beancount_lines.extend([
             "; 由cmb2beancount工具自动生成",
             "; 生成时间: " + datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-            "; 注意：中铁网络等交通支出以及酒店、机票等旅游支出如需报销，请手动添加 #报销 标签并修改支出账户为 Assets:Receivable:Reimbursement",
+            "; 注意：中铁网络等交通支出以及酒店、机票等旅游支出如需报销，请手动添加 #报销 标签并修改支出账户为 Assets:Receivable:Reimbursement:可报销",
             ""
         ])
         
@@ -451,13 +451,6 @@ class CMBBeanConverter:
         for trans in transactions:
             accounts.add(self._get_account(trans))
         
-        # 添加账户声明
-        beancount_lines.extend([
-            "; 账户声明",
-            *[f"{datetime.now().strftime('%Y-%m-%d')} open {account} CNY" for account in sorted(accounts)],
-            f"{datetime.now().strftime('%Y-%m-%d')} open Assets:Receivable:Reimbursement CNY",
-            ""
-        ])
         
         # 按日期排序交易记录
         transactions.sort(key=lambda x: x.date)
@@ -480,15 +473,15 @@ class CMBBeanConverter:
             if trans.transaction_type == '还款':
                 # 还款交易：从Assets:CN:CMB:Checking账户转入
                 lines = [
-                    f"{date_str} * \"{description}\" #还款",  # 添加 #还款 标签
+                    f"{date_str} * \"{description}\" #repayment",  # 添加 #还款 标签
                     f"  ; 类型: 信用卡还款",  # 添加注释说明
                     f"  {self._get_account(trans)} {amount_str}",
-                    f"  Assets:CN:CMB:Checking"
+                    f"  Assets:CCB4914:建设银行4914"
                 ]
             elif trans.transaction_type == '退款':
                 # 退款交易：添加特殊标记和标签
                 lines = [
-                    f"{date_str} * \"{description}\" #退款",  # 添加 #退款 标签
+                    f"{date_str} * \"{description}\" #refund",  # 添加 #退款 标签
                     f"  ; 类型: 退款交易",  # 添加注释说明
                     f"  {self._get_account(trans)} {amount_str}",
                     f"  {category_account} -{amount_str}"
@@ -504,7 +497,7 @@ class CMBBeanConverter:
                     # 可报销交易：添加提示注释
                     lines = [
                         f"{date_str} * \"{description}\"",
-                        f"  ; 提示: 如需报销请添加 #报销 标签并修改支出账户为 Assets:Receivable:Reimbursement",
+                        f"  ; 提示: 如需报销请添加 #报销 标签并修改支出账户为 Assets:Receivable:Reimbursement:可报销",
                         f"  {self._get_account(trans)} -{amount_str}",
                         f"  {category_account}"
                     ]

@@ -2,7 +2,7 @@ currency: CNY
 
 accounts:
   # 使用模板格式，{card_number}将被替换为实际的卡号后四位
-  assets_template: "Liabilities:CN:CMB:Card-{card_number}"
+  assets_template: "Liabilities:CMB{card_number}:招商银行{card_number}"
   expenses: Expenses:Unknown
   income: Income:Unknown
 
@@ -11,7 +11,7 @@ rules:
   categories:
     # 饮品
     beverages:
-      account: Expenses:Food:Beverages
+      account: Expenses:Food:Beverages:饮品
       patterns:
         - "暖爸鲜米酒"
         - "星巴克"
@@ -28,7 +28,7 @@ rules:
 
     # 餐饮
     dining:
-      account: Expenses:Food:Dining
+      account: Expenses:Food:Dining:餐饮
       patterns:
         - "美团"
         - "饿了么"
@@ -55,7 +55,7 @@ rules:
 
     # 交通
     transportation:
-      account: Expenses:Transport
+      account: Expenses:Transport:交通
       patterns:
         - "滴滴"
         - "高德"
@@ -88,11 +88,10 @@ rules:
 
     # 可报销支出
     reimbursable:
-      account: Assets:Receivable:Reimbursement
+      account: Assets:Receivable:Reimbursement:可报销
       patterns:
         - "差旅"
         - "报销"
-        - "商务"
         - "出差"
         - "融通.*出差"
         - "机票.*出差"
@@ -102,7 +101,7 @@ rules:
 
     # 食品杂货
     groceries:
-      account: Expenses:Food:Groceries
+      account: Expenses:Food:Groceries:食品杂货
       patterns:
         - "上海盒马网络科技有限公司"
         - "上海盒马网络科技有限公"
@@ -116,7 +115,7 @@ rules:
 
     # 购物
     shopping:
-      account: Expenses:Shopping
+      account: Expenses:Shopping:购物
       patterns:
         - "淘宝"
         - "天猫"
@@ -127,7 +126,7 @@ rules:
 
     # 娱乐
     entertainment:
-      account: Expenses:Entertainment
+      account: Expenses:Entertainment:娱乐
       patterns:
         - "电影"
         - "游戏"
@@ -150,7 +149,7 @@ rules:
 
     # 日用品
     daily:
-      account: Expenses:Daily
+      account: Expenses:Daily:日用品
       patterns:
         - "清洁"
         - "卫生"
@@ -160,7 +159,7 @@ rules:
 
     # 医疗支出
     medical:
-      account: Expenses:Health:Medical
+      account: Expenses:Health:Medical:医疗支出
       patterns:
         - "叮当智慧药房"
         - "药房"
@@ -175,7 +174,7 @@ rules:
 
     # 住房
     housing:
-      account: Expenses:Housing
+      account: Expenses:Housing:住房
       patterns:
         - "房租"
         - "物业"
@@ -185,10 +184,12 @@ rules:
         - "暖气"
         - "宽带"
         - "装修"
+        - "国网上海市电力公司"
+        - "国网电力"
 
     # 教育
     education:
-      account: Expenses:Education
+      account: Expenses:Education:教育
       patterns:
         - "学校"
         - "培训"
@@ -202,7 +203,7 @@ rules:
 
     # 数码电子
     electronics:
-      account: Expenses:Electronics
+      account: Expenses:Electronics:数码电子
       patterns:
         - "苹果"
         - "华为"
@@ -215,7 +216,7 @@ rules:
 
     # 服装
     clothing:
-      account: Expenses:Clothing
+      account: Expenses:Clothing:服装
       patterns:
         - "优衣库"
         - "服装"
@@ -226,7 +227,7 @@ rules:
 
     # 健康运动
     health:
-      account: Expenses:Health
+      account: Expenses:Health:健康运动
       patterns:
         - "健身"
         - "运动"
@@ -238,7 +239,7 @@ rules:
 
     # 旅游
     travel:
-      account: Expenses:Travel
+      account: Expenses:Travel:旅游
       patterns:
         - "机票" # 需要手动检查是否为出差机票可报销
         - "酒店" # 需要手动检查是否为出差住宿可报销
@@ -251,7 +252,7 @@ rules:
 
     # 通信
     communication:
-      account: Expenses:Communication
+      account: Expenses:Communication:通信
       patterns:
         - "中国联合网络通信有限公司"
         - "中国联合网络通信有限公"
@@ -264,7 +265,7 @@ rules:
 
     # 保险
     insurance:
-      account: Expenses:Insurance
+      account: Expenses:Insurance:保险
       patterns:
         - "保险"
         - "社保"
@@ -273,7 +274,7 @@ rules:
 
     # 收入
     income:
-      account: Income:Salary
+      account: Income:Salary:收入
       patterns:
         - "工资"
         - "薪资"
@@ -284,7 +285,7 @@ rules:
 
     # 零食
     snacks:
-      account: Expenses:Food:Snacks
+      account: Expenses:Food:Snacks:零食
       patterns:
         - "欢囍花生"
         - "坚果"
@@ -294,10 +295,3 @@ rules:
         - "糖果"
         - "饼干"
         - "薯片"
-
-    电费:
-      account: Expenses:Home:Electricity
-      patterns:
-        - "国网上海市电力公司"
-        - "国网电力"
-        - "电费"
